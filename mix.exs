@@ -14,7 +14,7 @@ defmodule Digitalocean.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:poison]]
+    [applications: [:poison, :httpoison]]
   end
 
   # Dependencies can be Hex packages:
@@ -27,6 +27,7 @@ defmodule Digitalocean.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:poison, "~> 2.2"}]
+    [{:poison, "~> 2.2"},
+     {:httpoison, "~> 0.9.0"}]
   end
 end
