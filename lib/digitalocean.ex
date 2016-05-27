@@ -1,2 +1,2 @@
-defmodule Digitalocean do
+defmodule DigitalOcean do
 end
