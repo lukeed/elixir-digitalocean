@@ -28,6 +28,7 @@ defmodule Digitalocean.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:poison, "~> 2.2"},
-     {:httpoison, "~> 0.9.0"}]
+     {:httpoison, "~> 0.9.0"},
+     {:ex_doc, "~> 0.13.0", only: :dev}]
   end
 end
