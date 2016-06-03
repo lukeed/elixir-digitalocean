@@ -1,6 +1,6 @@
-defmodule DigitaloceanTest do
+defmodule DigitalOceanTest do
   use ExUnit.Case
-  doctest Digitalocean
+  doctest DigitalOcean
 
   test "the truth" do
     assert 1 + 1 == 2

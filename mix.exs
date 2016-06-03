@@ -1,4 +1,4 @@
-defmodule Digitalocean.Mixfile do
+defmodule DigitalOcean.Mixfile do
   use Mix.Project
 
   def project do

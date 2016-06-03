@@ -1,4 +1,4 @@
-# Digitalocean
+# DigitalOcean
 
 **TODO: Add description**
 
