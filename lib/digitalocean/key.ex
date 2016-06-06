@@ -60,7 +60,7 @@ defmodule DigitalOcean.Key do
 	def delete(key_id), do: del("account/keys/#{key_id}")
 
 	@doc """
-	Similar to `delete/2` but returns the response body only.
+	Similar to `delete/1` but returns the response body only.
 	"""
 	def delete!(key_id), do: delete(key_id) |> body
 end
