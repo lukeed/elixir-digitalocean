@@ -1,4 +1,4 @@
-defmodule DigitalOcean.Storage do
+defmodule DigitalOcean.Volume do
 	@moduledoc """
 	API methods for interacting with the `Block Storage` module.
 
@@ -19,7 +19,7 @@ defmodule DigitalOcean.Storage do
 	Create a new volume.
 
 	## Example
-		iex> DigitalOcean.Storage.create("example", 10, "nyc1", "Block store for examples.")
+		iex> DigitalOcean.Volume.create("example", 10, "nyc1", "Block store for examples.")
 	"""
 	def create(name, size, region, desc \\ "") do
 		post("volumes", %{name: name, size_gigabytes: size, region: region, description: desc})
@@ -34,7 +34,7 @@ defmodule DigitalOcean.Storage do
 	Get Volume information by its `id`.
 
 	## Example
-		iex> DigitalOcean.Storage.show("7724db7c-e098-11e5-b522-000f53304e51")
+		iex> DigitalOcean.Volume.show("7724db7c-e098-11e5-b522-000f53304e51")
 	"""
 	def show(vol_id), do: get("volumes/#{vol_id}")
 
@@ -47,7 +47,7 @@ defmodule DigitalOcean.Storage do
 	Get Volume information by its `name` and `region` pair.
 
 	## Example
-		iex> DigitalOcean.Storage.show("example", "nyc1")
+		iex> DigitalOcean.Volume.show("example", "nyc1")
 	"""
 	def show(name, region), do: get("volumes?name=#{name}&region=#{region}")
 

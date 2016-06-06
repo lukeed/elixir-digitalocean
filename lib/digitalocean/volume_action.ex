@@ -1,4 +1,4 @@
-defmodule DigitalOcean.Storage.Action do
+defmodule DigitalOcean.Volume.Action do
 	@moduledoc """
 	API methods for interacting with the `Block Storage Action` module.
 
@@ -6,7 +6,7 @@ defmodule DigitalOcean.Storage.Action do
 	"""
 
 	@doc """
-	Attach a Block Storage volume to a Droplet by its `id` and `region` pair.
+	Attach a Volume to a Droplet by its `id` and `region` pair.
 	"""
 	def attach_by_id(vol_id, vol_region, drop_id) do
 		handle_id("attach", vol_id, vol_region, drop_id)
@@ -20,7 +20,7 @@ defmodule DigitalOcean.Storage.Action do
 	end
 
 	@doc """
-	Attach a Block Storage volume to a Droplet by its `name` and `region` pair.
+	Attach a Volume to a Droplet by its `name` and `region` pair.
 	"""
 	def attach_by_name(vol_name, vol_region, drop_id) do
 		handle_name("attach", vol_name, vol_region, drop_id)
