@@ -1,6 +1,6 @@
 # DigitalOcean
 
-**TODO: Add description**
+> (WIP) Elixir wrapper for the Digital Ocean API v2.
 
 ## Installation
 
@@ -21,4 +21,3 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       [applications: [:digitalocean]]
     end
     ```
-

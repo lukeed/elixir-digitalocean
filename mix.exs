@@ -5,7 +5,7 @@ defmodule DigitalOcean.Mixfile do
     app: :digitalocean,
     version: "0.1.0",
     elixir: "~> 1.3",
-    description: "Elixir wrapper for the Digital Ocean API v2.",
+    description: "(WIP) Elixir wrapper for the Digital Ocean API v2.",
     build_embedded: Mix.env == :prod,
     start_permanent: Mix.env == :prod,
     deps: deps()
