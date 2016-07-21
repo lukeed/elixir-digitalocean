@@ -5,6 +5,8 @@ defmodule DigitalOcean.Key do
 	See the [SSH Key Reference](https://developers.digitalocean.com/documentation/v2/#ssh-keys).
 	"""
 
+	import DigitalOcean, only: [get: 1, post: 2, put: 2, del: 1, body: 1]
+
 	@doc """
 	List all SSH Keys.
 	"""

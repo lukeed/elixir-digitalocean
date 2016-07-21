@@ -5,6 +5,8 @@ defmodule DigitalOcean.Region do
 	See the [Region Reference](https://developers.digitalocean.com/documentation/v2/#regions).
 	"""
 
+	import DigitalOcean, only: [get: 1, body: 1]
+
 	@doc """
 	List all Regions.
 	"""

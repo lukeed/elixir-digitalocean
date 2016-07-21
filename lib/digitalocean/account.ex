@@ -5,6 +5,8 @@ defmodule DigitalOcean.Account do
 	See the [Account Reference](https://developers.digitalocean.com/documentation/v2/#account).
 	"""
 
+	import DigitalOcean, only: [get: 1, body: 1]
+
 	@doc """
 	Get information about the Account associated with the token.
 

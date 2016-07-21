@@ -5,6 +5,8 @@ defmodule DigitalOcean.Volume do
 	See the [Block Storage Reference](https://developers.digitalocean.com/documentation/v2/#block-storage).
 	"""
 
+	import DigitalOcean, only: [get: 1, post: 2, del: 1, body: 1]
+
 	@doc """
 	List all Block Storage volumes.
 	"""

@@ -5,6 +5,8 @@ defmodule DigitalOcean.Volume.Action do
 	See the [Block Storage Action Reference](https://developers.digitalocean.com/documentation/v2/#block-storage-actions).
 	"""
 
+	import DigitalOcean, only: [get: 1, post: 2, body: 1]
+
 	@doc """
 	List all actions for a Volume.
 	"""

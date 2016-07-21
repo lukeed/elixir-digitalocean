@@ -5,6 +5,8 @@ defmodule DigitalOcean.Size do
 	See the [Size Reference](https://developers.digitalocean.com/documentation/v2/#sizes).
 	"""
 
+	import DigitalOcean, only: [get: 1, body: 1]
+
 	@doc """
 	List all Sizes.
 	"""

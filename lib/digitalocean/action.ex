@@ -5,6 +5,8 @@ defmodule DigitalOcean.Action do
 	See the [Action Reference](https://developers.digitalocean.com/documentation/v2/#account).
 	"""
 
+	import DigitalOcean, only: [get: 1, body: 1]
+
 	@doc """
 	List all Actions.
 	"""

@@ -5,6 +5,8 @@ defmodule DigitalOcean.Domain.Record do
 	See the [Domain Record Reference](https://developers.digitalocean.com/documentation/v2/#domain-records).
 	"""
 
+	import DigitalOcean, only: [get: 1, post: 2, put: 2, del: 1, body: 1]
+
 	@doc """
 	List all Records for a Domain.
 	"""
@@ -22,7 +24,7 @@ defmodule DigitalOcean.Domain.Record do
 		iex> DigitalOcean.Domain.Record.create("example.com",
 						%{type: "A", name: "www", data: "162.10.66.0"})
 	"""
-	def create(domain, attrs), do: post("domains/#{domain}/records", attrs})
+	def create(domain, attrs), do: post("domains/#{domain}/records", attrs)
 
 	@doc """
 	Similar to `create/2` but returns the response body only.

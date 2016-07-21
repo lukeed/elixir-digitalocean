@@ -5,6 +5,8 @@ defmodule DigitalOcean.Domain do
 	See the [Domain Reference](https://developers.digitalocean.com/documentation/v2/#domains).
 	"""
 
+	import DigitalOcean, only: [get: 1, post: 2, del: 1, body: 1]
+
 	@doc """
 	List all Domains.
 	"""
