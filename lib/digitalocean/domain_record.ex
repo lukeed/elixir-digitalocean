@@ -22,7 +22,7 @@ defmodule DigitalOcean.Domain.Record do
 
 	## Example
 		iex> DigitalOcean.Domain.Record.create("example.com",
-						%{type: "A", name: "www", data: "162.10.66.0"})
+			%{type: "A", name: "www", data: "162.10.66.0"})
 	"""
 	def create(domain, attrs), do: post("domains/#{domain}/records", attrs)
 
