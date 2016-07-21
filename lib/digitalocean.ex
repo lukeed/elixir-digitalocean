@@ -6,10 +6,23 @@ defmodule DigitalOcean do
 	use HTTPoison.Base
 
 	@host "https://api.digitalocean.com/v2/"
-	@api_token "YOUR_TOKEN_HERE"
-	@per_page 25
+	# @per_page 25
 
-	def build_url(path) do
-		@host <> path
+	defp get_token, do: System.get_env("DO_API_TOKEN")
+
+	defp process_url(path), do: @host <> path
+
+	defp process_request_headers(headers) do
+		[{"Content-type", "application/json"}, {"Authorization", "Bearer #{get_token}"}] ++ headers
 	end
+
+	defp process_response_body(""), do: ""
+	defp process_response_body(body), do: Poison.decode!(body, keys: :atoms)
+
+	@doc """
+	Parse & Return only the `body` from HTTPoison's response tuple.
+	"""
+	def body({_, body, _}), do: body
+
+	def del(path), do: delete(path)
 end
