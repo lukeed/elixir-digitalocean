@@ -6,17 +6,17 @@ defmodule DigitalOcean.Domain do
 	"""
 
 	@doc """
-	List all Domains.
+	List all Domains.
 	"""
 	def list, do: get("domains")
 
 	@doc """
-	Similar to `list/0` but returns the response body only.
+	Similar to `list/0` but returns the response body only.
 	"""
 	def list!, do: list |> body
 
 	@doc """
-	Create a new Domain.
+	Create a new Domain.
 
 	## Example
 		iex> DigitalOcean.Domain.create("example.com", "1.2.3.4")
@@ -25,7 +25,7 @@ defmodule DigitalOcean.Domain do
 	def create(name, ip), do: post("domains", %{name: name, ip_address: ip})
 
 	@doc """
-	Similar to `create/2` but returns the response body only.
+	Similar to `create/2` but returns the response body only.
 	"""
 	def create!(name, ip), do: create(name, ip) |> body
 
@@ -35,12 +35,12 @@ defmodule DigitalOcean.Domain do
 	def show(name), do: get("domains/#{name}")
 
 	@doc """
-	Similar to `show/1` but returns the response body only.
+	Similar to `show/1` but returns the response body only.
 	"""
 	def show!(name), do: show(name) |> body
 
 	@doc """
-	Delete a Domain.
+	Delete a Domain.
 	"""
 	def delete(name), do: del("domains/#{name}")
 

@@ -6,12 +6,12 @@ defmodule DigitalOcean.Size do
 	"""
 
 	@doc """
-	List all Sizes.
+	List all Sizes.
 	"""
 	def list, do: get("sizes")
 
 	@doc """
-	Similar to `list/0` but returns the response body only.
+	Similar to `list/0` but returns the response body only.
 	"""
 	def list!, do: list |> body
 end

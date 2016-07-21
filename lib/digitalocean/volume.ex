@@ -6,17 +6,17 @@ defmodule DigitalOcean.Volume do
 	"""
 
 	@doc """
-	List all Block Storage volumes.
+	List all Block Storage volumes.
 	"""
 	def list, do: get("volumes")
 
 	@doc """
-	Similar to `list/0` but returns the response body only.
+	Similar to `list/0` but returns the response body only.
 	"""
 	def list!, do: list |> body
 
 	@doc """
-	Create a new volume.
+	Create a new volume.
 
 	## Example
 		iex> DigitalOcean.Volume.create("example", 10, "nyc1", "Block store for examples.")
@@ -26,7 +26,7 @@ defmodule DigitalOcean.Volume do
 	end
 
 	@doc """
-	Similar to `create/4` but returns the response body only.
+	Similar to `create/4` but returns the response body only.
 	"""
 	def create!(name, size, region, desc \\ ""), do: create(name, size, region, desc) |> body
 
@@ -39,12 +39,12 @@ defmodule DigitalOcean.Volume do
 	def show(vol_id), do: get("volumes/#{vol_id}")
 
 	@doc """
-	Similar to `show/1` but returns the response body only.
+	Similar to `show/1` but returns the response body only.
 	"""
 	def show(vol_id), do: show(vol_id) |> body
 
 	@doc """
-	Get Volume information by its `name` and `region` pair.
+	Get Volume information by its `name` and `region` pair.
 
 	## Example
 		iex> DigitalOcean.Volume.show("example", "nyc1")
@@ -52,12 +52,12 @@ defmodule DigitalOcean.Volume do
 	def show(name, region), do: get("volumes?name=#{name}&region=#{region}")
 
 	@doc """
-	Similar to `show/2` but returns the response body only.
+	Similar to `show/2` but returns the response body only.
 	"""
 	def show!(name, region), do: show(name, region) |> body
 
 	@doc """
-	Delete a Volume by its `id`.
+	Delete a Volume by its `id`.
 	"""
 	def delete(vol_id), do: del("volumes/#{vol_id}")
 
@@ -67,7 +67,7 @@ defmodule DigitalOcean.Volume do
 	def delete!(vol_id), do: delete(vol_id) |> body
 
 	@doc """
-	Delete a Volume by its `name` and `region` pair.
+	Delete a Volume by its `name` and `region` pair.
 	"""
 	def delete(name, region), do: del("volumes?name=#{name}&region=#{region}")
 

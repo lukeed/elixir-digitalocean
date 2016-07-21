@@ -6,12 +6,12 @@ defmodule DigitalOcean.Action do
 	"""
 
 	@doc """
-	List all Actions.
+	List all Actions.
 	"""
 	def list, do: get("actions")
 
 	@doc """
-	Similar to `list/0` but returns the response body only.
+	Similar to `list/0` but returns the response body only.
 	"""
 	def list!, do: list |> body
 
@@ -21,7 +21,7 @@ defmodule DigitalOcean.Action do
 	def show(action_id), do: get("actions/#{action_id}")
 
 	@doc """
-	Similar to `show/1` but returns the response body only.
+	Similar to `show/1` but returns the response body only.
 	"""
 	def show!(action_id), do: show(action_id) |> body
 end
