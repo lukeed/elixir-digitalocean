@@ -43,7 +43,7 @@ defmodule DigitalOcean.Volume do
 	@doc """
 	Similar to `show/1` but returns the response body only.
 	"""
-	def show(vol_id), do: show(vol_id) |> body
+	def show!(vol_id), do: show(vol_id) |> body
 
 	@doc """
 	Get Volume information by its `name` and `region` pair.

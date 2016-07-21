@@ -41,7 +41,7 @@ defmodule DigitalOcean.Key do
 	@doc """
 	Similar to `show/1` but returns the response body only.
 	"""
-	def show(key_id), do: show(key_id) |> body
+	def show!(key_id), do: show(key_id) |> body
 
 	@doc """
 	Update a SSH Key's name.
