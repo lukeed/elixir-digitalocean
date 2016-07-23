@@ -30,9 +30,6 @@ defmodule DigitalOcean.Mixfile do
     name: :digitalocean,
     maintainers: ["Luke Edwards"],
     licenses: ["MIT"],
-    links: %{
-      "GitHub" => "https://github.com/lukeed/elixir-digitalocean",
-      "Docs" => "https://hex.pm/packages/digitalocean"
-    }
+    links: %{"GitHub" => "https://github.com/lukeed/elixir-digitalocean"}
   ] end
 end
