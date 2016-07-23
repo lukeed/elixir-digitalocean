@@ -20,9 +20,17 @@ defmodule DigitalOcean do
 	defp process_response_body(body), do: Poison.decode!(body, keys: :atoms)
 
 	@doc """
-	Parse & Return only the `body` from HTTPoison's response tuple.
+	Format the `HTTPoison.Response` struct as a tuple.
 	"""
-	def body({_, body, _}), do: body
+	def full({status, res}), do: {status, res.body, res.headers}
 
+	@doc """
+	Return only the `body` key from the `full/1` response tuple.
+	"""
+	def body({_, bod, _}), do: bod
+
+	@doc """
+	Shortname for `delete/1`
+	"""
 	def del(path), do: delete(path)
 end
