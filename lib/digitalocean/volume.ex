@@ -5,12 +5,12 @@ defmodule DigitalOcean.Volume do
 	See the [Block Storage Reference](https://developers.digitalocean.com/documentation/v2/#block-storage).
 	"""
 
-	import DigitalOcean, only: [get: 1, post: 2, del: 1, body: 1]
+	import DigitalOcean, only: [get: 1, post: 2, del: 1, body: 1, full: 1]
 
 	@doc """
 	List all Block Storage volumes.
 	"""
-	def list, do: get("volumes")
+	def list, do: get("volumes") |> full
 
 	@doc """
 	Similar to `list/0` but returns the response body only.
@@ -24,7 +24,7 @@ defmodule DigitalOcean.Volume do
 		iex> DigitalOcean.Volume.create("example", 10, "nyc1", "Block store for examples.")
 	"""
 	def create(name, size, region, desc \\ "") do
-		post("volumes", %{name: name, size_gigabytes: size, region: region, description: desc})
+		post("volumes", %{name: name, size_gigabytes: size, region: region, description: desc}) |> full
 	end
 
 	@doc """
@@ -38,7 +38,7 @@ defmodule DigitalOcean.Volume do
 	## Example
 		iex> DigitalOcean.Volume.show("7724db7c-e098-11e5-b522-000f53304e51")
 	"""
-	def show(vol_id), do: get("volumes/#{vol_id}")
+	def show(vol_id), do: get("volumes/#{vol_id}") |> full
 
 	@doc """
 	Similar to `show/1` but returns the response body only.
@@ -51,7 +51,7 @@ defmodule DigitalOcean.Volume do
 	## Example
 		iex> DigitalOcean.Volume.show("example", "nyc1")
 	"""
-	def show(name, region), do: get("volumes?name=#{name}&region=#{region}")
+	def show(name, region), do: get("volumes?name=#{name}&region=#{region}") |> full
 
 	@doc """
 	Similar to `show/2` but returns the response body only.
@@ -61,7 +61,7 @@ defmodule DigitalOcean.Volume do
 	@doc """
 	Delete a Volume by its `id`.
 	"""
-	def delete(vol_id), do: del("volumes/#{vol_id}")
+	def delete(vol_id), do: del("volumes/#{vol_id}") |> full
 
 	@doc """
 	Similar to `delete/1` but returns the response body only.
@@ -71,7 +71,7 @@ defmodule DigitalOcean.Volume do
 	@doc """
 	Delete a Volume by its `name` and `region` pair.
 	"""
-	def delete(name, region), do: del("volumes?name=#{name}&region=#{region}")
+	def delete(name, region), do: del("volumes?name=#{name}&region=#{region}") |> full
 
 	@doc """
 	Similar to `delete/2` but returns the response body only.

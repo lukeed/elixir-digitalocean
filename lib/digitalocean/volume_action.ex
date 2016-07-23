@@ -5,12 +5,12 @@ defmodule DigitalOcean.Volume.Action do
 	See the [Block Storage Action Reference](https://developers.digitalocean.com/documentation/v2/#block-storage-actions).
 	"""
 
-	import DigitalOcean, only: [get: 1, post: 2, body: 1]
+	import DigitalOcean, only: [get: 1, post: 2, body: 1, full: 1]
 
 	@doc """
 	List all actions for a Volume.
 	"""
-	def list(vol_id), do: get("volumes/#{vol_id}/actions")
+	def list(vol_id), do: get("volumes/#{vol_id}/actions") |> full
 
 	@doc """
 	Similar to `list/1` but returns the response body only.
@@ -20,7 +20,7 @@ defmodule DigitalOcean.Volume.Action do
 	@doc """
 	Get info for a Volume action.
 	"""
-	def show(vol_id, act_id), do: get("volumes/#{vol_id}/actions/#{act_id}")
+	def show(vol_id, act_id), do: get("volumes/#{vol_id}/actions/#{act_id}") |> full
 
 	@doc """
 	Similar to `show/2` but returns the response body only.
@@ -31,7 +31,7 @@ defmodule DigitalOcean.Volume.Action do
 	Attach a Volume to a Droplet by its `id` and `region` pair.
 	"""
 	def attach_by_id(vol_id, vol_region, drop_id) do
-		send_post("attach", vol_id, %{region: vol_region, droplet_id: drop_id})
+		send_post("attach", vol_id, %{region: vol_region, droplet_id: drop_id}) |> full
 	end
 
 	@doc """
@@ -45,7 +45,7 @@ defmodule DigitalOcean.Volume.Action do
 	Attach a Volume to a Droplet by its `name` and `region` pair.
 	"""
 	def attach_by_name(vol_name, vol_region, drop_id) do
-		send_post("attach", %{name: vol_name, region: vol_region, droplet_id: drop_id})
+		send_post("attach", %{name: vol_name, region: vol_region, droplet_id: drop_id}) |> full
 	end
 
 	@doc """
@@ -59,7 +59,7 @@ defmodule DigitalOcean.Volume.Action do
 	Detach a Volume from a Droplet by its `id` and `region` pair.
 	"""
 	def detach_by_id(vol_id, vol_region, drop_id) do
-		send_post("detach", vol_id, %{region: vol_region, droplet_id: drop_id})
+		send_post("detach", vol_id, %{region: vol_region, droplet_id: drop_id}) |> full
 	end
 
 	@doc """
@@ -73,7 +73,7 @@ defmodule DigitalOcean.Volume.Action do
 	Detach a Volume from a Droplet by its `name` and `region` pair.
 	"""
 	def detach_by_name(vol_name, vol_region, drop_id) do
-		send_post("detach", %{name: vol_name, region: vol_region, droplet_id: drop_id})
+		send_post("detach", %{name: vol_name, region: vol_region, droplet_id: drop_id}) |> full
 	end
 
 	@doc """
@@ -87,7 +87,7 @@ defmodule DigitalOcean.Volume.Action do
 	Resize a Volume storage.
 	"""
 	def resize(vol_id, vol_region, size) do
-		send_post("resize", vol_id, %{region: vol_region, size_gigabytes: size})
+		send_post("resize", vol_id, %{region: vol_region, size_gigabytes: size}) |> full
 	end
 
 	defp merge(map, type), do: Map.put(map, :type, type)

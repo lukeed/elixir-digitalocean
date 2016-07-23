@@ -5,12 +5,12 @@ defmodule DigitalOcean.Size do
 	See the [Size Reference](https://developers.digitalocean.com/documentation/v2/#sizes).
 	"""
 
-	import DigitalOcean, only: [get: 1, body: 1]
+	import DigitalOcean, only: [get: 1, body: 1, full: 1]
 
 	@doc """
 	List all Sizes.
 	"""
-	def list, do: get("sizes")
+	def list, do: get("sizes") |> full
 
 	@doc """
 	Similar to `list/0` but returns the response body only.
