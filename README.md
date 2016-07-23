@@ -1,28 +1,26 @@
-# DigitalOcean
+# DigitalOcean [![Build Status](https://travis-ci.org/lukeed/elixir-digitalocean.svg?branch=master)](https://travis-ci.org/lukeed/elixir-digitalocean) [![Hex pm](http://img.shields.io/hexpm/v/digitalocean.svg?style=flat)](https://hex.pm/packages/digitalocean)
 
-> A (WIP) Elixir wrapper for the Digital Ocean API v2.
+> A (WIP) Elixir wrapper for the Digital Ocean API v2. ([View Docs](https://hexdocs.pm/digitalocean/))
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+1. Add `digitalocean` to your list of dependencies in `mix.exs`:
 
-  1. Add `digitalocean` to your list of dependencies in `mix.exs`:
+  ```elixir
+  def deps do
+    [{:digitalocean, "~> 0.0.1"}]
+  end
+  ```
 
-    ```elixir
-    def deps do
-      [{:digitalocean, "~> 0.0.1"}]
-    end
-    ```
+2. Ensure `digitalocean` is started before your application:
 
-  2. Ensure `digitalocean` is started before your application:
+  ```elixir
+  def application do
+    [applications: [:digitalocean]]
+  end
+  ```
 
-    ```elixir
-    def application do
-      [applications: [:digitalocean]]
-    end
-    ```
-
-## ToDo
+## To Do
 
 - [ ] The [Droplet](https://developers.digitalocean.com/documentation/v2/#droplets) module.
 - [ ] The [Droplet Action](https://developers.digitalocean.com/documentation/v2/#droplet-actions) module.
