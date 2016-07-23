@@ -90,6 +90,11 @@ defmodule DigitalOcean.Volume.Action do
 		send_post("resize", vol_id, %{region: vol_region, size_gigabytes: size}) |> full
 	end
 
+	@doc """
+	Similar to `resize/3` but returns the response body only.
+	"""
+	def resize!(vol_id, vol_region, size), do: resize(vol_id, vol_region, size) |> body
+
 	defp merge(map, type), do: Map.put(map, :type, type)
 	defp send_post(type, vol_map), do: post("volumes/actions", merge(vol_map, type))
 	defp send_post(type, vol_id, vol_map), do: post("volumes/#{vol_id}/actions", merge(vol_map, type))
