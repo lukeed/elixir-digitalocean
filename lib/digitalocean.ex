@@ -8,7 +8,7 @@ defmodule DigitalOcean do
 	@host "https://api.digitalocean.com/v2/"
 	# @per_page 25
 
-	defp get_token, do: System.get_env("DO_API_TOKEN")
+	defp get_token, do: Application.get_env(:digitalocean, :token)
 
 	defp process_url(path), do: @host <> path
 
