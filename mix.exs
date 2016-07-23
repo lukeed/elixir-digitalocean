@@ -1,13 +1,18 @@
 defmodule DigitalOcean.Mixfile do
   use Mix.Project
 
+  @description """
+  A (WIP) Elixir wrapper for the Digital Ocean API v2.
+  """
+
   def project do [
     app: :digitalocean,
     version: "0.0.1",
     elixir: "~> 1.3",
-    description: "(WIP) Elixir wrapper for the Digital Ocean API v2.",
+    description: @description,
     build_embedded: Mix.env == :prod,
     start_permanent: Mix.env == :prod,
+    package: package,
     deps: deps()
   ] end
 
