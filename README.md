@@ -1,6 +1,6 @@
 # DigitalOcean
 
-> (WIP) Elixir wrapper for the Digital Ocean API v2.
+> A (WIP) Elixir wrapper for the Digital Ocean API v2.
 
 ## Installation
 
@@ -10,7 +10,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 
     ```elixir
     def deps do
-      [{:digitalocean, "~> 0.1.0"}]
+      [{:digitalocean, "~> 0.0.1"}]
     end
     ```
 
@@ -21,3 +21,13 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       [applications: [:digitalocean]]
     end
     ```
+
+## ToDo
+
+- [ ] The [Droplet](https://developers.digitalocean.com/documentation/v2/#droplets) module.
+- [ ] The [Droplet Action](https://developers.digitalocean.com/documentation/v2/#droplet-actions) module.
+- [ ] The [Floating IP](https://developers.digitalocean.com/documentation/v2/#floating-ips) module.
+- [ ] The [Floating IP Action](https://developers.digitalocean.com/documentation/v2/#floating-ip-actions) module.
+- [ ] The [Image](https://developers.digitalocean.com/documentation/v2/#images) module.
+- [ ] The [Image Action](https://developers.digitalocean.com/documentation/v2/#image-actions) module.
+- [ ] The [Tag](https://developers.digitalocean.com/documentation/v2/#tags) module.
