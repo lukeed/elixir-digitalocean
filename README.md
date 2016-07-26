@@ -20,6 +20,12 @@
   end
   ```
 
+3. Configure your `digitalocean` application settings:
+
+  ```elixir
+  config :digitalocean, token: "YOUR_API_TOKEN"
+  ```
+
 ## To Do
 
 - [ ] The [Droplet](https://developers.digitalocean.com/documentation/v2/#droplets) module.
