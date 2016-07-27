@@ -22,6 +22,12 @@ defmodule DigitalOcean.Tag do
 	def delete(name), do: del("tags/#{name}") |> full
 	def delete!(name), do: delete(name) |> body
 
+	@doc """
+	Get all Droplets with a given Tag. Same as `DigitalOcean.Droplet.list/1`.
+	"""
+	def droplets(name), do: get("droplets?tag_name=#{name}") |> full
+	def droplets!(name), do: droplets(name) |> body
+
 	# TODO: `Resource` struct?
 	# TODO: tag & untag resource
 end
