@@ -5,6 +5,8 @@ defmodule DigitalOcean.Droplet do
 	See the [Droplet Reference](https://developers.digitalocean.com/documentation/v2/#droplets).
 	"""
 
+	import DigitalOcean, only: [get: 1, post: 2, del: 1, body: 1, full: 1]
+
 	@doc """
 	List all Droplets.
 	"""
