@@ -22,8 +22,11 @@ defmodule DigitalOcean.Droplet do
 	@doc """
 	Create a new Droplet.
 	"""
-	# def create(name, ip), do: post("droplets", %{name: name, ip_address: ip}) |> full
-	# def create!(name, ip), do: create(name, ip) |> body
+	def create(data), do: post("droplets", data) |> full
+	def create!(data), do: create(data) |> body
+
+	def create(names, data), do: Map.drop(data, [:name]) |> Map.put(%{names: names}) |> create
+	def create!(names, data), do: create(names, data) |> body
 
 	@doc """
 	Get an existing Droplet.
