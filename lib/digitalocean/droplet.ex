@@ -52,6 +52,12 @@ defmodule DigitalOcean.Droplet do
 	def show_backups(droplet_id), do: url(droplet_id, "backups") |> get |> full
 	def show_backups!(droplet_id), do: show_backups(droplet_id) |> body
 
+	@doc """
+	Delete a Droplet.
+	"""
+	def delete(droplet_id), do: url(droplet_id) |> del |> full
+	def delete!(droplet_id), do: delete(droplet_id) |> body
+
 	defp url(id), do: "droplets/#{id}"
 	defp url(id, path), do: "#{url(id)}/#{path}"
 end
