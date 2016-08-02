@@ -22,7 +22,8 @@ defmodule DigitalOcean do
 	@doc """
 	Format the `HTTPoison.Response` struct as a tuple.
 	"""
-	def full({status, res}), do: {status, res.body, res.headers}
+	def full({status, res}) when status === :ok, do: {status, res.body, res.headers}
+	def full({status, res}) when status === :error, do: {status, res.reason}
 
 	@doc """
 	Return only the `body` key from the `full/1` response tuple.
