@@ -28,7 +28,7 @@
 
 ## To Do
 
-- [ ] The [Droplet](https://developers.digitalocean.com/documentation/v2/#droplets) module.
+- [x] The [Droplet](https://developers.digitalocean.com/documentation/v2/#droplets) module.
 - [ ] The [Droplet Action](https://developers.digitalocean.com/documentation/v2/#droplet-actions) module.
 - [ ] The [Floating IP](https://developers.digitalocean.com/documentation/v2/#floating-ips) module.
 - [x] The [Floating IP Action](https://developers.digitalocean.com/documentation/v2/#floating-ip-actions) module.
