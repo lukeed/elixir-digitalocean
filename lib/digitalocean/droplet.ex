@@ -53,10 +53,11 @@ defmodule DigitalOcean.Droplet do
 	def show_backups!(droplet_id), do: show_backups(droplet_id) |> body
 
 	@doc """
-	Delete a Droplet.
+	Delete a Droplet by its `id` or all Droplets with given `Tag`.
 	"""
-	def delete(droplet_id), do: url(droplet_id) |> del |> full
-	def delete!(droplet_id), do: delete(droplet_id) |> body
+	def delete(key) when is_integer(key), do: url(key) |> del |> full
+	def delete(key) when is_string(key), do: del("droplets?tag_name=#{key}") |> full
+	def delete!(key), do: delete(key) |> body
 
 	defp url(id), do: "droplets/#{id}"
 	defp url(id, path), do: "#{url(id)}/#{path}"
