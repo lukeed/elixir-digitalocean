@@ -10,7 +10,7 @@ defmodule DigitalOcean.Domain.Record do
 	@doc """
 	List all Records for a Domain.
 	"""
-	def list(domain), do: get("domains/#{domain}/records") |> full
+	def list(domain), do: url(domain) |> get |> full
 
 	@doc """
 	Similar to `list/0` but returns the response body only.
@@ -24,7 +24,7 @@ defmodule DigitalOcean.Domain.Record do
 		iex> DigitalOcean.Domain.Record.create("example.com",
 			%{type: "A", name: "www", data: "162.10.66.0"})
 	"""
-	def create(domain, attrs), do: post("domains/#{domain}/records", attrs) |> full
+	def create(domain, attrs), do: url(domain) |> post(attrs) |> full
 
 	@doc """
 	Similar to `create/2` but returns the response body only.
@@ -37,7 +37,7 @@ defmodule DigitalOcean.Domain.Record do
 	## Example
 		iex> DigitalOcean.Domain.Record.show("example.com", 3352896)
 	"""
-	def show(domain, record_id), do: get("domains/#{domain}/records/#{record_id}") |> full
+	def show(domain, record_id), do: url(domain, record_id) |> get |> full
 
 	@doc """
 	Similar to `show/2` but returns the response body only.
@@ -50,7 +50,7 @@ defmodule DigitalOcean.Domain.Record do
 	## Example
 		iex> DigitalOcean.Domain.Record.update("example.com", 3352896, %{name: "blog"})
 	"""
-	def update(domain, record_id, attrs), do: put("domains/#{domain}/records/#{record_id}", attrs) |> full
+	def update(domain, record_id, attrs), do: url(domain, record_id) |> put(attrs) |> full
 
 	@doc """
 	Similar to `update/3` but returns the response body only.
@@ -60,10 +60,13 @@ defmodule DigitalOcean.Domain.Record do
 	@doc """
 	Delete a Domain Record.
 	"""
-	def delete(domain, record_id), do: del("domains/#{domain}/records/#{record_id}") |> full
+	def delete(domain, record_id), do: url(domain, record_id) |> del |> full
 
 	@doc """
 	Similar to `delete/2` but returns the response body only.
 	"""
 	def delete!(domain, record_id), do: delete(domain, record_id) |> body
+
+	defp url(name), do: "domains/#{name}/records"
+	defp url(name, rec), do: "#{url(name)}/#{rec}"
 end
