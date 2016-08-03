@@ -10,7 +10,7 @@ defmodule DigitalOcean.Key do
 	@doc """
 	List all SSH Keys.
 	"""
-	def list, do: get("account/keys") |> full
+	def list, do: url |> get |> full
 
 	@doc """
 	Similar to `list/0` but returns the response body only.
@@ -23,7 +23,7 @@ defmodule DigitalOcean.Key do
 	## Example
 		iex> DigitalOcean.Key.create("My SSH Public Key", "ssh-rsa AAA...4V example")
 	"""
-	def create(name, pub_key), do: post("account/keys", %{name: name, public_key: pub_key}) |> full
+	def create(name, pub_key), do: url |> post(%{name: name, public_key: pub_key}) |> full
 
 	@doc """
 	Similar to `create/2` but returns the response body only.
@@ -36,7 +36,7 @@ defmodule DigitalOcean.Key do
 	## Example
 		iex> DigitalOcean.Key.show(512190)
 	"""
-	def show(key_id), do: get("account/keys/#{key_id}") |> full
+	def show(key_id), do: url(key_id) |> get |> full
 
 	@doc """
 	Similar to `show/1` but returns the response body only.
@@ -49,7 +49,7 @@ defmodule DigitalOcean.Key do
 	## Example
 		iex> DigitalOcean.Key.update(512190, "Renamed SSH Key")
 	"""
-	def update(key_id, name), do: put("account/keys/#{key_id}", %{name: name}) |> full
+	def update(key_id, name), do: url(key_id) |> put(%{name: name}) |> full
 
 	@doc """
 	Similar to `update/2` but returns the response body only.
@@ -59,10 +59,13 @@ defmodule DigitalOcean.Key do
 	@doc """
 	Delete a SSH Key by its `id` or `fingerprint`.
 	"""
-	def delete(key_id), do: del("account/keys/#{key_id}") |> full
+	def delete(key_id), do: url(key_id) |> del |> full
 
 	@doc """
 	Similar to `delete/1` but returns the response body only.
 	"""
 	def delete!(key_id), do: delete(key_id) |> body
+
+	defp url, do: "account/keys"
+	defp url(id), do: "#{url}/#{id}"
 end
