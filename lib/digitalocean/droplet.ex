@@ -25,7 +25,7 @@ defmodule DigitalOcean.Droplet do
 	def create(data), do: post("droplets", data) |> full
 	def create!(data), do: create(data) |> body
 
-	def create(names, data), do: Map.drop(data, [:name]) |> Map.put(%{names: names}) |> create
+	def create(names, data), do: Map.drop(data, [:name]) |> Map.put(:names, names) |> create
 	def create!(names, data), do: create(names, data) |> body
 
 	@doc """
