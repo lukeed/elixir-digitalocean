@@ -17,5 +17,5 @@ defmodule DigitalOcean.Droplet.Neighbor do
 	Show neighbors for a given Droplet.
 	"""
 	def show(droplet_id), do: get("droplets/#{droplet_id}/neighbors") |> full
-	def show!(droplet_id), do: show_neighbors(droplet_id) |> body
+	def show!(droplet_id), do: show(droplet_id) |> body
 end
