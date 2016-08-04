@@ -36,11 +36,5 @@ defmodule DigitalOcean do
 	Shortname for `delete/1`
 	"""
 	def del(path), do: delete(path)
-
-	@doc """
-	Shortname for `delete/2`
-	"""
-	def del(path, data), do: delete(path, encode(data))
-
-	defp encode(map), do: Poison.encode!(map)
+	def del(path, data), do: delete(path, data)
 end
