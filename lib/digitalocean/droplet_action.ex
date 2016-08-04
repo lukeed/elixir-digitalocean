@@ -35,7 +35,7 @@ defmodule DigitalOcean.Droplet.Action do
 	 "enable_ipv6", "enable_private_networking"]
 	|> Enum.each(fn evt ->
 		def unquote(:"tag_#{evt}")(tag), do: post("droplets/actions?tag_name=#{tag}", %{type: unquote(evt)}) |> full
-		def unquote(:"tag_#{evt}!")(tag), do: unquote(:"#{evt}")(tag) |> body
+		def unquote(:"tag_#{evt}!")(tag), do: unquote(:"tag_#{evt}")(tag) |> body
 	end)
 
 	defp url(id), do: "droplets/#{id}/actions"
