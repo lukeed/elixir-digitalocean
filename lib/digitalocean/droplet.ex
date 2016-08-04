@@ -55,8 +55,8 @@ defmodule DigitalOcean.Droplet do
 	@doc """
 	Delete a Droplet by its `id` or all Droplets with given `Tag`.
 	"""
+	def delete(key) when is_binary(key), do: del("droplets?tag_name=#{key}") |> full
 	def delete(key) when is_integer(key), do: url(key) |> del |> full
-	def delete(key) when is_string(key), do: del("droplets?tag_name=#{key}") |> full
 	def delete!(key), do: delete(key) |> body
 
 	defp url(id), do: "droplets/#{id}"
