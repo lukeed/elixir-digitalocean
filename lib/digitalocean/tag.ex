@@ -39,6 +39,6 @@ defmodule DigitalOcean.Tag do
 	def untag(name, list), do: del("#{url(name)}/resources", wrap(list))
 
 	defp url(tag), do: "tags/#{tag}"
-	defp wrap(ids), do: %{resources: mapper(list)}
+	defp wrap(ids), do: %{resources: mapper(ids)}
 	defp mapper(ids), do: Enum.map(ids, fn id -> %{resource_id: id, resource_type: "droplet"} end)
 end
