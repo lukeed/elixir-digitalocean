@@ -31,13 +31,14 @@ defmodule DigitalOcean.Tag do
 	@doc """
 	Add the Tag to each Droplet in the list, via their IDs.
 	"""
-	def tag(name, list), do: post("#{url(name)}/resources", merger(list))
+	def tag(name, list), do: post("#{url(name)}/resources", wrap(list))
 
 	@doc """
 	Remove the Tag from a list of Droplets, via their IDs.
 	"""
-	def untag(name, list), do: del("#{url(name)}/resources", merger(list))
+	def untag(name, list), do: del("#{url(name)}/resources", wrap(list))
 
 	defp url(tag), do: "tags/#{tag}"
-	defp merger(list), do: Enum.map(list, &Map.put(&1, :resource_type, "droplet"))
+	defp wrap(ids), do: %{resources: mapper(list)}
+	defp mapper(ids), do: Enum.map(ids, fn id -> %{resource_id: id, resource_type: "droplet"} end)
 end
