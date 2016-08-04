@@ -30,9 +30,10 @@
 
 - [x] The [Droplet](https://developers.digitalocean.com/documentation/v2/#droplets) module.
 - [x] The [Droplet Action](https://developers.digitalocean.com/documentation/v2/#droplet-actions) module.
-- [ ] The [Floating IP](https://developers.digitalocean.com/documentation/v2/#floating-ips) module.
+- [x] The [Floating IP](https://developers.digitalocean.com/documentation/v2/#floating-ips) module.
 - [x] The [Floating IP Action](https://developers.digitalocean.com/documentation/v2/#floating-ip-actions) module.
 - [x] The [Image](https://developers.digitalocean.com/documentation/v2/#images) module.
 - [x] The [Image Action](https://developers.digitalocean.com/documentation/v2/#image-actions) module.
 - [x] The [Tag](https://developers.digitalocean.com/documentation/v2/#tags) module.
 - [ ] Add `@doc`-based tests
+- [ ] Add all method documentation
