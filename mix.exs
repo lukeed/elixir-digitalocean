@@ -7,7 +7,7 @@ defmodule DigitalOcean.Mixfile do
 
   def project do [
     app: :digitalocean,
-    version: "0.1.0",
+    version: "0.1.1",
     elixir: "~> 1.2",
     description: @description,
     build_embedded: Mix.env == :prod,
