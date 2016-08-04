@@ -13,22 +13,30 @@ defmodule DigitalOcean.Droplet.Action do
 	def show(id, act_id), do: "#{url(id)}/#{act_id}" |> get |> full
 	def show!(id, act_id), do: show(id, act_id) |> body
 
-	# reset_password
-	# def restore(id, image), do:
-	# # resize
-	# def rebuild(id, image), do:
-	# def snapshot(id, name), do:
-	# def rename(id, name), do:
-	# change_kernel
-
 	# simple POST methods
 	["enable_backups", "disable_backups", "reboot", "shutdown",
 	 "power_cycle", "power_off", "power_on", "enable_ipv6",
-	 "enable_private_networking"]
-	 	|> Enum.each(fn evt ->
-			def unquote(:"#{evt}")(id), do: url(id) |> post(%{type: unquote(evt)}) |> full
-			def unquote(:"#{evt}!")(id), do: unquote(:"#{evt}")(id) |> body
-		end)
+	 "enable_private_networking", "password_reset"]
+ 	|> Enum.each(fn evt ->
+		def unquote(:"#{evt}")(id), do: url(id) |> post(%{type: unquote(evt)}) |> full
+		def unquote(:"#{evt}!")(id), do: unquote(:"#{evt}")(id) |> body
+	end)
+
+	# arity/2 POST methods
+	["restore", "resize", "rebuild", "rename", "snapshot", "change_kernel"]
+	|> Enum.each(fn evt ->
+		def unquote(:"#{evt}")(id, map), do: url(id) |> post(Map.put(map, :type, unquote(evt))) |> full
+		def unquote(:"#{evt}!")(id, map), do: unquote(:"#{evt}")(id, map) |> body
+	end)
+
+	# Perform actions on Tags
+	["enable_backups", "disable_backups", "snapshot",
+	 "shutdown", "power_cycle", "power_off", "power_on",
+	 "enable_ipv6", "enable_private_networking"]
+	|> Enum.each(fn evt ->
+		def unquote(:"tag_#{evt}")(tag), do: post("droplets/actions?tag_name=#{tag}", %{type: unquote(evt)}) |> full
+		def unquote(:"tag_#{evt}!")(tag), do: unquote(:"#{evt}")(tag) |> body
+	end)
 
 	defp url(id), do: "droplets/#{id}/actions"
 end
