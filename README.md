@@ -8,7 +8,7 @@
 
   ```elixir
   def deps do
-    [{:digitalocean, "~> 0.0.1"}]
+    [{:digitalocean, "~> 0.1.1"}]
   end
   ```
 
